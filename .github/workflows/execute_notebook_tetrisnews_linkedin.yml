@@ -18,7 +18,7 @@ jobs:
           python-version: '3.x'
 
       - name: Install dependencies
-        run: pip install -r requirements.txt  # Si vous avez des dépendances Python à installer
+        run: pip install -r requirement.txt  # Si vous avez des dépendances Python à installer
 
       - name: Execute Notebook
         run: jupyter nbconvert --to notebook --execute linkedinCoding.ipynb
