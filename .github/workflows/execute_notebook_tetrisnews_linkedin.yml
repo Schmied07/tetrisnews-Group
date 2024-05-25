@@ -1,0 +1,24 @@
+name: Execute Notebook
+
+on:
+  schedule:
+    - cron: '30 8 * * *'  # Exécuter tous les jours à 8h30 UTC
+
+jobs:
+  execute_notebook:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt  # Si vous avez des dépendances Python à installer
+
+      - name: Execute Notebook
+        run: jupyter nbconvert --to notebook --execute linkedinCoding.ipynb
