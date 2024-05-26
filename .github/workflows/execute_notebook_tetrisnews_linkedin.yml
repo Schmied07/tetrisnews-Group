@@ -20,11 +20,12 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install --upgrade pip
+          python -m pip install --upgrade pip
+          pip install jupyter  # Installer Jupyter
           pip install -r requirements.txt  # Si vous avez des dépendances Python à installer
 
       - name: Execute Notebook
-        run: jupyter nbconvert --to notebook --execute --inplace linkedinCoding.ipynb
+        run: python -m jupyter nbconvert --to notebook --execute --inplace linkedinCoding.ipynb
 
       - name: Commit and Push changes
         run: |
