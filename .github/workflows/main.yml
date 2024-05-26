@@ -30,10 +30,10 @@ jobs:
 
       - name: Commit and Push changes
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
         run: |
           git config --local user.name "Schmied07"
           git config --local user.email "talomthibaut@gmail.com"
           git add linkedinCoding.ipynb
           git commit -m "Executed notebook"
-          git push
+          git push https://Schmied07:${{ secrets.PAT_TOKEN }}@github.com/Schmied07/Tetrisnews-Linkedin.git
