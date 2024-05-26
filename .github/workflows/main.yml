@@ -6,7 +6,6 @@ on:
     # 8h30 heure d'hiver (CET, UTC+1) => 7h30 UTC
     - cron: '30 7 * * *'
     # 8h30 heure d'été (CEST, UTC+2) => 6h30 UTC
-    - cron: '30 6 * * *'
 
 jobs:
   build:
@@ -30,13 +29,3 @@ jobs:
 
       - name: Execute Notebook
         run: jupyter nbconvert --to notebook --execute --inplace linkedinCoding.ipynb
-
-      - name: Commit and Push changes
-        env:
-          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
-        run: |
-          git config --local user.name "Schmied07"
-          git config --local user.email "talomthibaut@gmail.com"
-          git add linkedinCoding.ipynb
-          git commit -m "Executed notebook"
-          git push https://Schmied07:${{ secrets.PAT_TOKEN }}@github.com/Schmied07/Tetrisnews-Linkedin.git
