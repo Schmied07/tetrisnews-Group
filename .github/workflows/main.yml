@@ -3,7 +3,10 @@ name: Jupyter
 on:
   workflow_dispatch:
   schedule:
-    - cron: '02 10 * * *'  # Exécuter tous les jours à 10h02 UTC
+    # 8h30 heure d'hiver (CET, UTC+1) => 7h30 UTC
+    - cron: '30 7 * * *'
+    # 8h30 heure d'été (CEST, UTC+2) => 6h30 UTC
+    - cron: '30 6 * * *'
 
 jobs:
   build:
