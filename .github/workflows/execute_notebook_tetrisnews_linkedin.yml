@@ -3,6 +3,7 @@ name: Execute Notebook
 on:
   schedule:
     - cron: '30 8 * * *'  # Exécuter tous les jours à 8h30 UTC
+  workflow_dispatch:  # Permet de déclencher manuellement le workflow
 
 jobs:
   execute_notebook:
@@ -18,7 +19,19 @@ jobs:
           python-version: '3.x'
 
       - name: Install dependencies
-        run: pip install -r requirement.txt  # Si vous avez des dépendances Python à installer
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt  # Si vous avez des dépendances Python à installer
 
       - name: Execute Notebook
-        run: jupyter nbconvert --to notebook --execute linkedinCoding.ipynb
+        run: jupyter nbconvert --to notebook --execute --inplace linkedinCoding.ipynb
+
+      - name: Commit and Push changes
+        run: |
+          git config --local user.email "talomthibaut@gmail.com"
+          git config --local user.name "Schmied07"
+          git add linkedinCoding.ipynb
+          git commit -m "Executed notebook"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
