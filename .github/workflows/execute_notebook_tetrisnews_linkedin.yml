@@ -2,7 +2,7 @@ name: Execute Notebook
 
 on:
   schedule:
-    - cron: '30 9 * * *'  # Exécuter tous les jours à 8h30 UTC
+    - cron: '36 9 * * *'  # Exécuter tous les jours à 8h30 UTC
   workflow_dispatch:  # Permet de déclencher manuellement le workflow
 
 jobs:
