@@ -28,11 +28,11 @@ jobs:
         run: python -m jupyter nbconvert --to notebook --execute --inplace linkedinCoding.ipynb
 
       - name: Commit and Push changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --local user.email "talomthibaut@gmail.com"
           git config --local user.name "Schmied07"
           git add linkedinCoding.ipynb
           git commit -m "Executed notebook"
-          git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/Schmied07/Tetrisnews-Linkedin.git HEAD:main
