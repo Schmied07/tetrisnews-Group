@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install jupyter
+          pip install --upgrade jupyter
           pip install -r requirements.txt  # Si vous avez des dépendances Python à installer
 
       - name: Execute Notebook
