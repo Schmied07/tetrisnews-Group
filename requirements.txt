@@ -1,6 +1,6 @@
 gspread
 pandas
 oauth2client
-pillow-10.1.0
+pillow
 requests
 google-api-python-client
